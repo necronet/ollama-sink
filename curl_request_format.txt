@@ -1,0 +1,24 @@
+curl -X POST http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
+  "model": "deepseek-r1:1.5b",
+  "messages": [{"role": "user", "content": "En español dime acerca de Nicaragua"}],
+  "stream": false,
+  "format": {
+    "type": "object",
+    "properties": {
+      "name": {"type": "string"},
+      "capital": {"type": "string"},
+      "languages": {
+        "type": "array",
+        "items": {"type": "string"}
+      },
+      "population":{
+        "total": "integer"
+      },
+      "location":{
+        "lat":"decimal",
+        "lng":"decimal"
+      }
+    },
+    "required": ["name", "capital", "languages"]
+  }
+}'
